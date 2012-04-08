@@ -1,5 +1,7 @@
 package com.moltendorf.bukkit.intellidoors;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 /**
@@ -8,7 +10,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
  * @author moltendorf
  */
 class Listener_Interact_Monitor extends Listener_Interact {
-	@Override
+	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerInteract(final PlayerInteractEvent event) {
 		// Fail if the event was cancelled, or if there is no block.
 		if (event.isCancelled() || !event.hasBlock()) {

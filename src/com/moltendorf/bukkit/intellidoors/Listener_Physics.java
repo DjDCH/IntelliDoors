@@ -2,7 +2,8 @@ package com.moltendorf.bukkit.intellidoors;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.event.block.BlockListener;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockPhysicsEvent;
 
 /**
@@ -10,7 +11,7 @@ import org.bukkit.event.block.BlockPhysicsEvent;
  *
  * @author moltendorf
  */
-class Listener_Physics extends BlockListener implements Listener {
+class Listener_Physics implements Listener {
 	protected Handler getHandler(final Block block) {
 		// Get the material of block that was passed.
 		final Material material = block.getType();
@@ -48,7 +49,7 @@ class Listener_Physics extends BlockListener implements Listener {
 		return new Handler(material, set, open);
 	}
 
-	@Override
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onBlockPhysics(final BlockPhysicsEvent event) {
 		// Fail if the event was cancelled.
 		if (event.isCancelled()) {

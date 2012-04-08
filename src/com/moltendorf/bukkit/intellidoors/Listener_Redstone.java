@@ -1,6 +1,8 @@
 package com.moltendorf.bukkit.intellidoors;
 
 import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockRedstoneEvent;
 
 /**
@@ -14,7 +16,7 @@ class Listener_Redstone extends Listener_Physics {
 		return new Handler_Redstone_Double(material, set, side);
 	}
 
-	@Override
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onBlockRedstoneChange(final BlockRedstoneEvent event) {
 		final Handler handler = getHandler(event.getBlock());
 
