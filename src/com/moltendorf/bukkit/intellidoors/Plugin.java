@@ -1,7 +1,5 @@
 package com.moltendorf.bukkit.intellidoors;
 
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -48,12 +46,12 @@ public class Plugin extends JavaPlugin {
 		scheduler = getServer().getScheduler();
 
 		// Register block listeners.
-		manager.registerEvent(Type.BLOCK_PHYSICS, physicsListener, Priority.Highest, this);
-		manager.registerEvent(Type.REDSTONE_CHANGE, redstoneListener, Priority.Highest, this);
+		manager.registerEvents(physicsListener, this);
+		manager.registerEvents(redstoneListener, this);
 
 		// Register player listeners.
-		manager.registerEvent(Type.PLAYER_INTERACT, interactListener, Priority.Lowest, this);
-		manager.registerEvent(Type.PLAYER_INTERACT, interactMonitor, Priority.Monitor, this);
+		manager.registerEvents(interactListener, this);
+		manager.registerEvents(interactMonitor, this);
 
 		// Started.
 		System.out.println(info.getName() + " version " + info.getVersion() + " was initialized.");
