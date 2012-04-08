@@ -7,7 +7,7 @@ import org.bukkit.Material;
  *
  * @author moltendorf
  */
-interface Listener {
+interface Listener extends org.bukkit.event.Listener {
 	Handler make(final Set_FenceGate set, final boolean open);
 	Handler make(final Set_Trap set, final boolean open);
 	Handler make(final Material material, final Set_Door_Single set, final boolean open);
