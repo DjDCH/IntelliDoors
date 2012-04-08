@@ -1,6 +1,5 @@
 package com.moltendorf.bukkit.intellidoors;
 
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -23,22 +22,16 @@ public class Plugin extends JavaPlugin {
 
 	@Override
 	public synchronized void onDisable() {
-		final PluginDescriptionFile info = getDescription();
-
 		// Destruct our door object.
 		Door.Destruct();
 
 		// Reset our variables.
 		instance = null;
 		scheduler = null;
-
-		// Stopped.
-		System.out.println(info.getName() + " version " + info.getVersion() + " was disabled.");
 	}
 
 	@Override
 	public synchronized void onEnable() {
-		final PluginDescriptionFile info = getDescription();
 		final PluginManager manager = getServer().getPluginManager();
 
 		// Create our variables.
@@ -52,8 +45,5 @@ public class Plugin extends JavaPlugin {
 		// Register player listeners.
 		manager.registerEvents(interactListener, this);
 		manager.registerEvents(interactMonitor, this);
-
-		// Started.
-		System.out.println(info.getName() + " version " + info.getVersion() + " was initialized.");
 	}
 }
