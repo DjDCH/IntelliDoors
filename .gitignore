@@ -42,3 +42,12 @@ nb-configuration.xml
 
 # Customizations.
 !api/*.jar
+
+# Eclipse stuff
+/.classpath
+/.project
+/.settings
+/bin
+
+# vim
+.*.sw[a-p]
